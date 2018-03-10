@@ -21,11 +21,15 @@ infoWindow = new google.maps.InfoWindow();
 options = {
     zoom: 15,
     center: usa,
-    mapTypeId: google.maps.MapTypeId.TERRAIN
+    mapTypeId: google.maps.MapTypeId.TERRAIN,
+    streetViewControl: false
 };
 var map = new google.maps.Map( div, options );
 
-var geoloccontrol = new klokantech.GeolocationControl(map);
+var mapMaxZoom = 18;
+
+// add a control to get the users geolocation https required
+var geoloccontrol = new klokantech.GeolocationControl(map, mapMaxZoom);
 
 // setup the layers
 var th_layer = new google.maps.Data({map: map});
@@ -165,14 +169,14 @@ map.data.addListener('click', function(event) {
     data.addColumn('string', 'Sample');
     data.addColumn('number', 'Elevation');
     for (var i = 0; i < elevations.length; i++) {
-      data.addRow(['', elevations[i].elevation]);
+      data.addRow(['', elevations[i].elevation*3.28084]); // convert meters to feet
     }
 
     // Draw the chart using the data within its DIV.
     chart.draw(data, {
       height: 150,
       legend: 'none',
-      titleY: 'Elevation (m)'
+      titleY: 'Elevation (ft)'
     });
 
     // display a marker at position of the current elevation on the chart
@@ -196,7 +200,6 @@ map.data.addListener('click', function(event) {
     // close of the bottomsheet on mapclick
     map.addListener('click', function() {
         $('#modal1').modal('close');        
-    });
-    
+    });  
    
 });   
