@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<title></title>
+
+		<!--put your external stylesheet links here-->		
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> 
+
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="js/materialize.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css">
+
+        <!-- Compiled and minified JavaScript -->
+        <script src="js/materialize.min.js"></script>
+
+      
+        <script src="http://maps.google.com/maps/api/js?key=AIzaSyDaF2l5JJZSg97uMkGCL04nT6OMDwhzRp0"></script>
+        <script src="https://www.google.com/jsapi"></script>  
+        <script src="https://cdn.klokantech.com/maptilerlayer/v1/index.js"></script>
+   
+		<!--[if IE<9]>
+			<link rel="stylesheet" href="css/style.ie.css">
+		<![endif]-->
+	</head>
+
+	<body>
+        
+     <nav class="default" role="navigation">
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo center">NTN Trails</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">       
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <li><a href="#">Login</a></li>
+        <li><a href="#">Sign up</a></li>
+      </ul>
+    </div>
+  </nav>
+        <script>
+            $('.button-collapse').sideNav({
+              menuWidth: 240, // Default is 240
+              edge: 'left', // Choose the horizontal origin
+              closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+             }
+            );
+        </script>
+
+		<!--put your initial page content here-->
+		 <div id="map"></div>
+        
+        <!-- Modal Structure -->
+  <div id="modal1" class="modal bottom-sheet">
+    <div class="modal-content">
+        <h4><span id="name"></span></h4>
+        <span id="level"></span>
+      <div id="elevation_chart" style="width:256px; height:100px"></div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>       
+
+		<!--put your external script links here-->
+		<script type="text/javascript" src="js/main.js"></script>
+	</body>
+</html>

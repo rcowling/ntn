@@ -1,0 +1,135 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "North Trails Parking"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.413806,
+          46.572617
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "North Trails Parking"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.444096,
+          46.565027
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Forestville Parking"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.48069,
+          46.582492
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "South Trails Parking"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.390473,
+          46.511463
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "South Trails Parking"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.421761,
+          46.523261
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "South Trails Trailhead Parking"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.412961,
+          46.51387
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Saux Head Parking"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.578513,
+          46.718341
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Big Bay Pathway Parking"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.7404,
+          46.816
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Saux Head South Parking"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.5822,
+          46.70419
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Fit Strip Parking"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.4103,
+          46.5478
+        ]
+      }
+    }
+  ]
+}

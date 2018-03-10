@@ -1,0 +1,122 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Forestville Trailhead"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.479699,
+          46.5829
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Fit Strip Trailhead"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.4095,
+          46.5478
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Saux Head South Trailhead"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.5822,
+          46.70419
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Big Bay Pathway Trailhead"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.7404,
+          46.816
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Marquette South Trails Trailhead"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.412435,
+          46.513884
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Saux Head North Trailhead"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.578513,
+          46.718341
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Forestville West Trailhead"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6032,
+          46.5986
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "North Trails Trailhead"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.412076,
+          46.571914
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "MLBP Trailhead"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.4391,
+          46.5651
+        ]
+      }
+    }
+  ]
+}
