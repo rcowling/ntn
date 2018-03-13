@@ -17,9 +17,18 @@ body {position: absolute; z-index: -2;}
 }
 
 .modal {
-    height: 20%;
+    height: 30%;
     padding: 0px;
     overflow: hidden;
+}
+
+.modal .modal-content {
+    padding: 2px;
+}
+
+#name {
+    font-size: 20px;
+    color: green;
 }
 
 .material-icons {

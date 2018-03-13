@@ -1,5 +1,5 @@
 // Load the Visualization API and the columnchart package.
-google.load('visualization', '1', {packages: ['columnchart']});
+google.load('visualization', '1', {packages: ['line', 'corechart']});
 'use strict';
 var div,usa,infoWindow,path,start,end;
 var options,latlng,marker,markers;
@@ -159,7 +159,7 @@ map.data.addListener('click', function(event) {
     }
 
     // Create a new chart in the elevation_chart DIV.
-    var chart = new google.visualization.ColumnChart(chartDiv);
+    var chart = new google.visualization.LineChart(chartDiv);
 
     // Extract the data from which to populate the chart.
     // Because the samples are equidistant, the 'Sample'
@@ -176,6 +176,7 @@ map.data.addListener('click', function(event) {
     chart.draw(data, {
       height: 150,
       legend: 'none',
+      color: 'green',        
       titleY: 'Elevation (ft)'
     });
 
