@@ -157,7 +157,8 @@ map.data.addListener('click', function(event) {
           status;
       return;
     }
-
+      
+    function drawChart() {    
     // Create a new chart in the elevation_chart DIV.
     var chart = new google.visualization.LineChart(chartDiv);
 
@@ -179,7 +180,7 @@ map.data.addListener('click', function(event) {
       color: 'green',        
       titleY: 'Elevation (ft)'
     });
-
+    
     // display a marker at position of the current elevation on the chart
     google.visualization.events.addListener(chart, 'onmouseover', function(e) {
       if (mousemarker == null) {
@@ -194,7 +195,13 @@ map.data.addListener('click', function(event) {
       }
     });
 
-}           
+}   
+      drawChart();
+      $(window).resize(function(){
+          drawChart();
+      });
+  }
+    
     // when a line is clicked change its color    
      map.data.overrideStyle( event.feature, { strokeWeight: 7 } );    
     
