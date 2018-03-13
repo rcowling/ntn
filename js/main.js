@@ -88,8 +88,7 @@ parking_layer.setStyle(function(feature) {
   }
 });        
 
-map.data.addListener('click', function(event) {        
-
+map.data.addListener('click', function(event) {
     // open modal that contains info from the trail infowindow    
     $('#modal1').modal(); 
     $('#modal1').modal('open'); 
@@ -157,46 +156,48 @@ map.data.addListener('click', function(event) {
           status;
       return;
     }
-      
-    function drawChart() {    
-    // Create a new chart in the elevation_chart DIV.
-    var chart = new google.visualization.LineChart(chartDiv);
-
-    // Extract the data from which to populate the chart.
-    // Because the samples are equidistant, the 'Sample'
-    // column here does double duty as distance along the
-    // X axis.
-    var data = new google.visualization.DataTable();
-    data.addColumn('string', 'Sample');
-    data.addColumn('number', 'Elevation');
-    for (var i = 0; i < elevations.length; i++) {
-      data.addRow(['', elevations[i].elevation*3.28084]); // convert meters to feet
-    }
-
-    // Draw the chart using the data within its DIV.
-    chart.draw(data, {
-      height: 150,
-      legend: 'none',
-      color: 'green',        
-      titleY: 'Elevation (ft)'
-    });
     
-    // display a marker at position of the current elevation on the chart
-    google.visualization.events.addListener(chart, 'onmouseover', function(e) {
-      if (mousemarker == null) {
-        mousemarker = new google.maps.Marker({
-          position: elevations[e.row].location,
-          map: map,
-          icon: "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
-        });      
+    // Draws and elevation chart on the map using data from Elevation API  
+    function drawChart() {    
+        // Create a new chart in the elevation_chart DIV.
+        var chart = new google.visualization.LineChart(chartDiv);
 
-      } else {
-        mousemarker.setPosition(elevations[e.row].location);
-      }
-    });
+        // Extract the data from which to populate the chart.
+        // Because the samples are equidistant, the 'Sample'
+        // column here does double duty as distance along the
+        // X axis.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Sample');
+        data.addColumn('number', 'Elevation');
+        for (var i = 0; i < elevations.length; i++) {
+          data.addRow(['', elevations[i].elevation*3.28084]); // convert meters to feet
+        }
 
-}   
+        // Draw the chart using the data within its DIV.
+        chart.draw(data, {
+          height: 150,
+          legend: 'none',
+          color: 'green',        
+          titleY: 'Elevation (ft)'
+        });
+
+        // display a marker at position of the current elevation on the chart
+        google.visualization.events.addListener(chart, 'onmouseover', function(e) {
+          if (mousemarker == null) {
+            mousemarker = new google.maps.Marker({
+              position: elevations[e.row].location,
+              map: map,
+              icon: "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
+            });      
+
+          } else {
+            mousemarker.setPosition(elevations[e.row].location);
+          }
+        });
+
+    }   
       drawChart();
+      // when the window size is changed resize the chart
       $(window).resize(function(){
           drawChart();
       });
