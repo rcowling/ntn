@@ -1,7 +1,7 @@
 // Load the Visualization API and the columnchart package.
 google.load('visualization', '1', {packages: ['line', 'corechart']});
 'use strict';
-var div,usa,infoWindow,path,start,end;
+var div,usa,thWindow,parkWindow,path,start,end;
 var options,latlng,marker,markers;
 var mousemarker = null;
 markers=[];
@@ -16,7 +16,11 @@ var clearMarkers=function(){
 div=document.getElementById('map');
 usa=new google.maps.LatLng( 46.5292104377584, -87.42428541183472 );         
 
-infoWindow = new google.maps.InfoWindow();
+// creates an infowindow for the trailheads
+thWindow = new google.maps.InfoWindow();
+
+// creates an infowindow for the parking areas
+parkWindow = new google.maps.InfoWindow();
 
 options = {
     zoom: 15,
@@ -36,7 +40,9 @@ var th_layer = new google.maps.Data({map: map});
 var parking_layer = new google.maps.Data({map: map});
 
 // load the trailheads data onto the map
-th_layer.loadGeoJson('data/trailheads.geojson');  
+th_layer.loadGeoJson('data/trailheads.geojson');
+
+// load the parking lots data onto the map
 parking_layer.loadGeoJson('data/parking.geojson');
 
 var th_icon = {
@@ -61,6 +67,24 @@ parking_layer.setStyle(function(feature) {
     icon: parking_icon
   });
 });
+
+// set the infowindow for the trailheads layer
+th_layer.addListener('click', function(event) {
+  var myHTML = event.feature.getProperty("NAME");
+  thWindow.setContent("<div style='width:150px; text-align: center;'>"+myHTML+"</div>");
+  thWindow.setPosition(event.feature.getGeometry().get());
+  thWindow.setOptions({pixelOffset: new google.maps.Size(0,-30)});
+  thWindow.open(map);
+});  
+
+// set the infowindow for the parking layer
+parking_layer.addListener('click', function(event) {
+  var myHTML = event.feature.getProperty("NAME");
+  parkWindow.setContent("<div style='width:150px; text-align: center;'>"+myHTML+"</div>");
+  parkWindow.setPosition(event.feature.getGeometry().get());
+  parkWindow.setOptions({pixelOffset: new google.maps.Size(0,-20)});
+  parkWindow.open(map);
+});  
 
 // load trails data onto the map 
  map.data.loadGeoJson('data/trails2018.geojson');
@@ -160,7 +184,7 @@ map.data.addListener('click', function(event) {
     // Draws and elevation chart on the map using data from Elevation API  
     function drawChart() {    
         // Create a new chart in the elevation_chart DIV.
-        var chart = new google.visualization.LineChart(chartDiv);
+        var chart = new google.visualization.AreaChart(chartDiv);
 
         // Extract the data from which to populate the chart.
         // Because the samples are equidistant, the 'Sample'
