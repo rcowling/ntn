@@ -215,10 +215,11 @@ map.data.addListener('click', function(event) {
           legend: 'none',
           color: 'green',        
           titleY: 'Elevation (ft)'
-        });
+        });   
+        
 
         // display a marker at position of the current elevation on the chart
-        google.visualization.events.addListener(chart, 'onmouseover', function(e) {
+        google.visualization.events.addListener(chart, 'drag', function(e) {
           if (mousemarker == null) {
             mousemarker = new google.maps.Marker({
               position: elevations[e.row].location,
@@ -230,15 +231,18 @@ map.data.addListener('click', function(event) {
             mousemarker.setPosition(elevations[e.row].location);
           }
         });
-
-    }   
+        
+        // if the mouse is off of the graph remove the mousemarker
+        
+    }  
+      
       drawChart();
       // when the window size is changed resize the chart
       $(window).resize(function(){
           drawChart();
       });
   }
-    
+
     // when a line is clicked change its color    
      map.data.overrideStyle( event.feature, { strokeWeight: 7 } );    
     
@@ -246,5 +250,12 @@ map.data.addListener('click', function(event) {
     map.addListener('click', function() {
         $('#modal1').modal('close');        
     });  
+    
+       function clearMouseMarker() {
+    if (mousemarker != null) {
+      mousemarker.setMap(null);
+      mousemarker = null;
+    }
+  }
    
 });   
