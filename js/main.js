@@ -26,7 +26,14 @@ options = {
     zoom: 15,
     center: usa,
     mapTypeId: google.maps.MapTypeId.TERRAIN,
-    streetViewControl: false
+    streetViewControl: false,
+     styles: [{
+            featureType: "poi",
+            //elementType: "labels",
+            stylers: [{
+                visibility: "off"
+            }]
+        }]    
 };
 var map = new google.maps.Map( div, options );
 
@@ -87,32 +94,32 @@ parking_layer.addListener('click', function(event) {
 });  
 
 // load trails data onto the map 
- map.data.loadGeoJson('data/trails2018.geojson');
+map.data.loadGeoJson('data/trails2018.geojson');
 
 // add the original color style for the trails
 // style trails based on skill level
  map.data.setStyle(function(feature) {
- var skill = feature.getProperty('skill_leve');
- if (skill == 'ADVANCED'){
-  return /** @type {google.maps.Data.StyleOptions} */({
-    fillColor: 'white',
-    strokeColor: 'black',
-    strokeWeight: 3
-  });
-  } else if (skill == 'INTERMEDIATE'){
-  return /** @type {google.maps.Data.StyleOptions} */({
-    strokeColor: 'blue',
-    strokeWeight: 3
-  });
-  } else if (skill == 'BEGINNER'){
-  return /** @type {google.maps.Data.StyleOptions} */({
-    strokeColor: 'green',
-    strokeWeight: 3
-  });
-  }
+     var skill = feature.getProperty('skill_leve');
+     if (skill == 'ADVANCED'){
+      return /** @type {google.maps.Data.StyleOptions} */({
+        fillColor: 'white',
+        strokeColor: 'black',
+        strokeWeight: 3
+      });
+      } else if (skill == 'INTERMEDIATE'){
+      return /** @type {google.maps.Data.StyleOptions} */({
+        strokeColor: 'blue',
+        strokeWeight: 3
+      });
+      } else if (skill == 'BEGINNER'){
+      return /** @type {google.maps.Data.StyleOptions} */({
+        strokeColor: 'green',
+        strokeWeight: 3
+      });
+      }
 });        
 
-map.data.addListener('click', function(event) {
+map.data.addListener('click', function(event) {    
     // open modal that contains info from the trail infowindow    
     $('#modal1').modal(); 
     $('#modal1').modal('open'); 
@@ -130,6 +137,11 @@ map.data.addListener('click', function(event) {
     path = event.feature.getGeometry().getAt(0).getArray();
     start = event.feature.getGeometry().getAt(0).getAt( 0 );
     end  = event.feature.getGeometry().getAt(0).getAt( path.length-1 );
+    
+    // calculate the length of the trail in kilometers
+    var trailLength = Math.round((google.maps.geometry.spherical.computeLength(path)/1000) * 10)/10;
+    
+    console.log("the length of the trail is " + trailLength + " km");
 
     // place a marker at the start and end of each line
     markers.push( new google.maps.Marker({
