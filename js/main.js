@@ -4,7 +4,7 @@ google.load('visualization', '1', {packages: ['line', 'corechart']});
 var div,usa,thWindow,parkWindow,path,start,end;
 var options,latlng,marker,markers;
 var mousemarker = null;
-markers=[];
+markers = [];
 
 var clearMarkers=function(){
     markers.forEach( function( mkr ){
@@ -36,6 +36,13 @@ options = {
         }]    
 };
 var map = new google.maps.Map( div, options );
+
+function clearMouseMarker() {
+    if (mousemarker != null) {
+      mousemarker.setMap(null);
+      mousemarker = null;
+    }
+}
 
 var mapMaxZoom = 18;
 
@@ -94,7 +101,67 @@ parking_layer.addListener('click', function(event) {
 });  
 
 // load trails data onto the map 
-map.data.loadGeoJson('data/trails2018.geojson');
+map.data.loadGeoJson('data/ntn2018.geojson');
+
+// fuction to filter out trails that are used for snow biking
+function catBiking() {
+    map.data.setStyle(function(feature) {
+     var category = feature.getProperty('snowbike');
+     if (category == 'Y'){
+      return /** @type {google.maps.Data.StyleOptions} */({        
+        strokeColor: 'orange',
+        strokeWeight: 3,
+        visible: true  
+      });
+     } else {
+      return /** @type {google.maps.Data.StyleOptions} */({        
+        strokeColor: 'gray',
+        strokeWeight: 1,
+        visible: true  
+      });    
+     }
+    })
+}
+
+// fuction to filter out trails that are used for skiing
+function catSki() {
+    map.data.setStyle(function(feature) {
+     var category = feature.getProperty('skiing');
+     if (category == 'Y'){
+      return /** @type {google.maps.Data.StyleOptions} */({        
+        strokeColor: 'orange',
+        strokeWeight: 3,
+        visible: true  
+      });
+     } else {
+      return /** @type {google.maps.Data.StyleOptions} */({        
+        strokeColor: 'gray',
+        strokeWeight: 1,
+        visible: true  
+      });    
+     }
+    })
+}
+
+// fuction to filter out trails that are used for skiing
+function catShoe() {
+    map.data.setStyle(function(feature) {
+     var category = feature.getProperty('snowshoe');
+     if (category == 'Y'){
+      return /** @type {google.maps.Data.StyleOptions} */({        
+        strokeColor: 'orange',
+        strokeWeight: 3,
+        visible: true  
+      });
+     } else {
+      return /** @type {google.maps.Data.StyleOptions} */({        
+        strokeColor: 'gray',
+        strokeWeight: 1,
+        visible: true  
+      });    
+     }
+    })
+}
 
 // add the original color style for the trails
 // style trails based on skill level
@@ -109,7 +176,8 @@ map.data.loadGeoJson('data/trails2018.geojson');
       } else if (skill == 'INTERMEDIATE'){
       return /** @type {google.maps.Data.StyleOptions} */({
         strokeColor: 'blue',
-        strokeWeight: 3
+        strokeWeight: 3 
+          
       });
       } else if (skill == 'BEGINNER'){
       return /** @type {google.maps.Data.StyleOptions} */({
@@ -118,6 +186,7 @@ map.data.loadGeoJson('data/trails2018.geojson');
       });
       }
 });        
+
 
 map.data.addListener('click', function(event) {    
     // open modal that contains info from the trail infowindow    
@@ -219,7 +288,7 @@ map.data.addListener('click', function(event) {
         
 
         // display a marker at position of the current elevation on the chart
-        google.visualization.events.addListener(chart, 'drag', function(e) {
+        google.visualization.events.addListener(chart, 'onmouseover', function(e) {
           if (mousemarker == null) {
             mousemarker = new google.maps.Marker({
               position: elevations[e.row].location,
@@ -231,11 +300,7 @@ map.data.addListener('click', function(event) {
             mousemarker.setPosition(elevations[e.row].location);
           }
         });
-        
-        // if the mouse is off of the graph remove the mousemarker
-        
-    }  
-      
+    }        
       drawChart();
       // when the window size is changed resize the chart
       $(window).resize(function(){
