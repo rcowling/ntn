@@ -284,8 +284,7 @@ map.data.addListener('click', function(event) {
           legend: 'none',
           color: 'green',        
           titleY: 'Elevation (ft)'
-        });   
-        
+        });      
 
         // display a marker at position of the current elevation on the chart
         google.visualization.events.addListener(chart, 'onmouseover', function(e) {
@@ -311,9 +310,11 @@ map.data.addListener('click', function(event) {
     // when a line is clicked change its color    
      map.data.overrideStyle( event.feature, { strokeWeight: 7 } );    
     
-    // close of the bottomsheet on mapclick
+    // close of the bottomsheet, trail markers, and styles on mapclick
     map.addListener('click', function() {
-        $('#modal1').modal('close');        
+        $('#modal1').modal('close');         
+        map.data.revertStyle();         
+        clearMarkers.call( this );
     });  
     
        function clearMouseMarker() {
