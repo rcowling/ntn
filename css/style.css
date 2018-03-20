@@ -77,3 +77,12 @@ nav a.button-collapse {
     padding-top: 3px;
 }
 
+h10 {
+    display: block;
+    padding: 0 28px;
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+

@@ -4,6 +4,8 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width">
 		<title></title>
+        
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
 		<!--put your external stylesheet links here-->		
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -45,7 +47,11 @@
         <li><a href="#">Grooming Reports</a></li>
         <li><a href="#">Membership</a></li>
         <li><a href="weather.html">Weather</a></li>  
-          <h1>Filter:</h1>
+        <h10 style="color:black;"> Trail Filters:</h10>
+        <li onclick="catSki();"><a href="#">Skiing Only</a></li>   
+        <li onclick="catBiking();"><a href="#">Snowbiking Only</a></li>
+        <li onclick="catShoe();"><a href="#">Snowshowing Only</a></li>
+        <li><a href="">All Trails</a></li>
       </ul>        
     </div>
   </nav>
@@ -66,7 +72,7 @@
     <div class="modal-content">
         <span id="name"></span>
         Difficulty: <span id="level"></span>
-      <div id="elevation_chart" style="width:100%; height:159px align: center;" onmouseout="clearMouseMarker()"></div>
+      <div id="elevation_chart" style="width:100%; height:159px align: center;"></div>
     </div>
     <!--<div class="modal-footer">
       <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>

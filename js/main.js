@@ -315,13 +315,12 @@ map.data.addListener('click', function(event) {
         $('#modal1').modal('close');         
         map.data.revertStyle();         
         clearMarkers.call( this );
-    });  
-    
-       function clearMouseMarker() {
-    if (mousemarker != null) {
-      mousemarker.setMap(null);
-      mousemarker = null;
-    }
+        if (mousemarker != null) {
+         mousemarker.setMap(null);
+         mousemarker = null;
+        }
+    });      
+  
   }
    
 });   
