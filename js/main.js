@@ -321,6 +321,6 @@ map.data.addListener('click', function(event) {
         }
     });      
   
-  }
+  
    
 });   
