@@ -27,6 +27,7 @@ options = {
     center: usa,
     mapTypeId: google.maps.MapTypeId.TERRAIN,
     streetViewControl: false,
+    fullscreenControl: false,
      styles: [{
             featureType: "poi",
             //elementType: "labels",
@@ -136,7 +137,7 @@ function catSki() {
      } else {
       return /** @type {google.maps.Data.StyleOptions} */({        
         strokeColor: 'gray',
-        strokeWeight: 1,
+        strokeWeight: 2,
         visible: true  
       });    
      }
@@ -150,13 +151,13 @@ function catShoe() {
      if (category == 'Y'){
       return /** @type {google.maps.Data.StyleOptions} */({        
         strokeColor: 'orange',
-        strokeWeight: 3,
+        strokeWeight: 2,
         visible: true  
       });
      } else {
       return /** @type {google.maps.Data.StyleOptions} */({        
         strokeColor: 'gray',
-        strokeWeight: 1,
+        strokeWeight: 2,
         visible: true  
       });    
      }
@@ -185,8 +186,7 @@ function catShoe() {
         strokeWeight: 3
       });
       }
-});        
-
+});     
 
 map.data.addListener('click', function(event) {    
     // open modal that contains info from the trail infowindow    
@@ -196,7 +196,18 @@ map.data.addListener('click', function(event) {
     var name = event.feature.getProperty('trail_name');
     var level = event.feature.getProperty('skill_leve');
     $('#name').html(name);
-    $('#level').html(level);            
+    $('#level').html(level);
+    
+    // color the trail name according to difficulty
+    if (level == 'BEGINNER') {
+        document.getElementById("name").style.color = "green";
+    } else if (level == 'INTERMEDIATE') {
+        document.getElementById("name").style.color = "blue";        
+    } else if (level == 'ADVANCED') {
+        document.getElementById("name").style.color = "black";  
+    } else {
+        document.getElementById("name").style.color = "purple"; 
+    }
 
     // change the line back to its original color style
     map.data.revertStyle();
@@ -279,12 +290,36 @@ map.data.addListener('click', function(event) {
         }
 
         // Draw the chart using the data within its DIV.
-        chart.draw(data, {
-          height: 150,
-          legend: 'none',
-          color: 'green',        
-          titleY: 'Elevation (ft)'
-        });      
+        // Color the chart according to skill level.
+        if (level == 'BEGINNER') {
+            chart.draw(data, {
+              height: 150,
+              legend: 'none',
+              colors : ['green'],        
+              titleY: 'Elevation (ft)'
+            });
+        } else if (level == 'INTERMEDIATE') {
+            chart.draw(data, {
+              height: 150,
+              legend: 'none',
+              colors : ['blue'],        
+              titleY: 'Elevation (ft)'
+            });            
+        } else if (level == 'ADVANCED') {
+            chart.draw(data, {
+              height: 150,
+              legend: 'none',
+              colors : ['black'],        
+              titleY: 'Elevation (ft)'
+            });            
+        } else {
+            chart.draw(data, {
+              height: 150,
+              legend: 'none',
+              colors : ['yellow'],        
+              titleY: 'Elevation (ft)'
+            });            
+        }       
 
         // display a marker at position of the current elevation on the chart
         google.visualization.events.addListener(chart, 'onmouseover', function(e) {
@@ -319,8 +354,6 @@ map.data.addListener('click', function(event) {
          mousemarker.setMap(null);
          mousemarker = null;
         }
-    });      
-  
-  
-   
+    });    
+    
 });   
