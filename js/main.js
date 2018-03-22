@@ -86,7 +86,7 @@ parking_layer.setStyle(function(feature) {
 // set the infowindow for the trailheads layer
 th_layer.addListener('click', function(event) {
   var myHTML = event.feature.getProperty("NAME");
-  thWindow.setContent("<div style='width:150px; text-align: center;'>"+myHTML+"</div>");
+  thWindow.setContent("<div style='width:120px; text-align: center;'>"+myHTML+"</div>");
   thWindow.setPosition(event.feature.getGeometry().get());
   thWindow.setOptions({pixelOffset: new google.maps.Size(0,-30)});
   thWindow.open(map);
@@ -95,7 +95,7 @@ th_layer.addListener('click', function(event) {
 // set the infowindow for the parking layer
 parking_layer.addListener('click', function(event) {
   var myHTML = event.feature.getProperty("NAME");
-  parkWindow.setContent("<div style='width:150px; text-align: center;'>"+myHTML+"</div>");
+  parkWindow.setContent("<div style='width:120px; text-align: center;'>"+myHTML+"</div>");
   parkWindow.setPosition(event.feature.getGeometry().get());
   parkWindow.setOptions({pixelOffset: new google.maps.Size(0,-20)});
   parkWindow.open(map);
@@ -166,6 +166,7 @@ function catShoe() {
 
 // add the original color style for the trails
 // style trails based on skill level
+function createStyle(){
  map.data.setStyle(function(feature) {
      var skill = feature.getProperty('skill_leve');
      if (skill == 'ADVANCED'){
@@ -186,7 +187,19 @@ function catShoe() {
         strokeWeight: 3
       });
       }
-});     
+ });
+}
+
+createStyle();
+    
+
+/*map.data.addListener('mouseover', function(event) { 
+     map.data.overrideStyle( event.feature, { strokeWeight: 3, strokeColor: 'white' } );   
+});
+
+map.data.addListener('mouseout', function(event) { 
+     map.data.revertStyle();
+});*/
 
 map.data.addListener('click', function(event) {    
     // open modal that contains info from the trail infowindow    
@@ -220,7 +233,7 @@ map.data.addListener('click', function(event) {
     
     // calculate the length of the trail in kilometers
     var trailLength = Math.round((google.maps.geometry.spherical.computeLength(path)/1000) * 10)/10;
-    
+     $('#length').html(trailLength);
     console.log("the length of the trail is " + trailLength + " km");
 
     // place a marker at the start and end of each line
@@ -316,7 +329,7 @@ map.data.addListener('click', function(event) {
             chart.draw(data, {
               height: 150,
               legend: 'none',
-              colors : ['yellow'],        
+              colors : ['purple'],        
               titleY: 'Elevation (ft)'
             });            
         }       

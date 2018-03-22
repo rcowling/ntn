@@ -51,7 +51,7 @@
         <li onclick="catSki();"><a href="#">Skiing Only</a></li>   
         <li onclick="catBiking();"><a href="#">Snowbiking Only</a></li>
         <li onclick="catShoe();"><a href="#">Snowshowing Only</a></li>
-        <li><a href="">All Trails</a></li>
+        <li onclick="createStyle();"><a href="#">All Trails</a></li>
       </ul>        
     </div>
   </nav>
@@ -72,7 +72,9 @@
     <div class="modal-content">
         <span id="name"></span>
         Difficulty: <span id="level"></span>
+         [<span id="length"></span> km]
       <div id="elevation_chart" style="width:100%; height:159px align: center;"></div>
+       
     </div>
     <!--<div class="modal-footer">
       <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
