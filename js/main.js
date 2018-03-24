@@ -1,7 +1,7 @@
 // Load the Visualization API and the columnchart package.
 google.load('visualization', '1', {packages: ['line', 'corechart']});
 'use strict';
-var div,usa,thWindow,parkWindow,path,start,end;
+var div,mqt,thWindow,parkWindow,path,start,end;
 var options,latlng,marker,markers;
 var mousemarker = null;
 markers = [];
@@ -19,8 +19,8 @@ mqt=new google.maps.LatLng(46.6125248, -87.4940628 );
 // creates an infowindow for the trailheads
 thWindow = new google.maps.InfoWindow();
 
-// creates an infowindow for the parking areas
-parkWindow = new google.maps.InfoWindow();
+/*// creates an infowindow for the parking areas
+parkWindow = new google.maps.InfoWindow();*/
 
 options = {
     zoom: 10,
@@ -61,6 +61,7 @@ th_layer.loadGeoJson('data/trailheads.geojson');
 // remove for now save for potential future use
 //parking_layer.loadGeoJson('data/parking.geojson');
 
+// setup the custom icons
 var th_icon = {
 url: "img/th2.svg", // url
 scaledSize: new google.maps.Size(25,25), // size   
@@ -68,7 +69,7 @@ scaledSize: new google.maps.Size(25,25), // size
 
 var startIcon = {
 url: "img/start.svg", // url
-scaledSize: new google.maps.Size(35,35), // size   
+scaledSize: new google.maps.Size(30,30), // size   
 };
 
 var endIcon = {
@@ -247,7 +248,7 @@ map.data.addListener('click', function(event) {
     
     // calculate the length of the trail in kilometers
     var trailLength = Math.round((google.maps.geometry.spherical.computeLength(path)/1000) * 10)/10;
-     $('#length').html(trailLength);
+    $('#length').html(trailLength);
     console.log("the length of the trail is " + trailLength + " km");
 
     // place a marker at the start and end of each line
