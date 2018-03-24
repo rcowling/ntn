@@ -14,7 +14,7 @@ var clearMarkers=function(){
 };        
 
 div=document.getElementById('map');
-usa=new google.maps.LatLng( 46.5292104377584, -87.42428541183472 );         
+mqt=new google.maps.LatLng(46.6125248, -87.4940628 );         
 
 // creates an infowindow for the trailheads
 thWindow = new google.maps.InfoWindow();
@@ -23,8 +23,8 @@ thWindow = new google.maps.InfoWindow();
 parkWindow = new google.maps.InfoWindow();
 
 options = {
-    zoom: 15,
-    center: usa,
+    zoom: 10,
+    center: mqt,
     mapTypeId: google.maps.MapTypeId.TERRAIN,
     streetViewControl: false,
     fullscreenControl: false,
@@ -58,17 +58,28 @@ var parking_layer = new google.maps.Data({map: map});
 th_layer.loadGeoJson('data/trailheads.geojson');
 
 // load the parking lots data onto the map
-parking_layer.loadGeoJson('data/parking.geojson');
+// remove for now save for potential future use
+//parking_layer.loadGeoJson('data/parking.geojson');
 
 var th_icon = {
-url: "img/trailhead.svg", // url
-scaledSize: new google.maps.Size(30,30) // size
+url: "img/th2.svg", // url
+scaledSize: new google.maps.Size(25,25), // size   
 };
 
-var parking_icon = {
+var startIcon = {
+url: "img/start.svg", // url
+scaledSize: new google.maps.Size(35,35), // size   
+};
+
+var endIcon = {
+url: "img/end.svg", // url
+scaledSize: new google.maps.Size(30,30), // size   
+};
+
+/*var parking_icon = {
 url: "img/parking.svg", // url
 scaledSize: new google.maps.Size(20,20) // size
-};
+};*/
 
 // change the icons for the trailheads and parking lots
 th_layer.setStyle(function(feature) {
@@ -77,29 +88,32 @@ th_layer.setStyle(function(feature) {
   });
 });
 
-parking_layer.setStyle(function(feature) {
-  return /** @type {google.maps.Data.StyleOptions} */({
+/*parking_layer.setStyle(function(feature) {
+  return * @type {google.maps.Data.StyleOptions} ({
     icon: parking_icon
   });
-});
+});*/
 
 // set the infowindow for the trailheads layer
 th_layer.addListener('click', function(event) {
   var myHTML = event.feature.getProperty("NAME");
   thWindow.setContent("<div style='width:120px; text-align: center;'>"+myHTML+"</div>");
   thWindow.setPosition(event.feature.getGeometry().get());
-  thWindow.setOptions({pixelOffset: new google.maps.Size(0,-30)});
+  thWindow.setOptions({pixelOffset: new google.maps.Size(0,-25)});
   thWindow.open(map);
-});  
+  // zoom into the marker when it is clicked    
+  map.setZoom(13);
+  map.panTo(event.feature.getGeometry().get());
+});
 
-// set the infowindow for the parking layer
+/*// set the infowindow for the parking layer
 parking_layer.addListener('click', function(event) {
   var myHTML = event.feature.getProperty("NAME");
   parkWindow.setContent("<div style='width:120px; text-align: center;'>"+myHTML+"</div>");
   parkWindow.setPosition(event.feature.getGeometry().get());
   parkWindow.setOptions({pixelOffset: new google.maps.Size(0,-20)});
   parkWindow.open(map);
-});  
+});*/  
 
 // load trails data onto the map 
 map.data.loadGeoJson('data/ntn2018.geojson');
@@ -240,11 +254,13 @@ map.data.addListener('click', function(event) {
     markers.push( new google.maps.Marker({
         position: start, 
         title:'Trail start',
+        icon: startIcon,
         map:map
     }));
     markers.push( new google.maps.Marker({
         position: end, 
         title:'Trail end',
+        icon: endIcon,
         map:map
     }));
 
