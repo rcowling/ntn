@@ -86,12 +86,8 @@ h10 {
     -webkit-margin-end: 0px;
 }
 
-img {
+.imgheader {
     position: absolute;
     right: 115px;
 }
 
-.brand-logo center {
-    position: absolute;
-    padding-left: 50px;
-}
