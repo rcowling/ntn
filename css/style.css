@@ -91,3 +91,8 @@ h10 {
     right: 145px;
 }
 
+#length, #km {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+}
+

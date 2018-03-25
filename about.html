@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<title></title>
+
+		<!--put your external stylesheet links here-->		
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> 
+
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="js/materialize.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css">
+
+        <!-- Compiled and minified JavaScript -->
+        <script src="js/materialize.min.js"></script>
+
+      
+        <script src="https://maps.google.com/maps/api/js?key=AIzaSyDaF2l5JJZSg97uMkGCL04nT6OMDwhzRp0"></script>
+        <script src="https://www.google.com/jsapi"></script>  
+        <script src="https://cdn.klokantech.com/maptilerlayer/v1/index.js"></script>
+        
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        
+
+   
+		<!--[if IE<9]>
+			<link rel="stylesheet" href="css/style.ie.css">
+		<![endif]-->
+	</head>
+
+	<body>
+        
+     <nav class="default" role="navigation">
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo center">About</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">       
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <li><a href="#">About</a></li>   
+        <li><a href="#">Grooming Reports</a></li>
+        <li><a href="#">Membership</a></li>
+        <li><a href="#">Weather</a></li>  
+          <h1>Filter:</h1>
+      </ul>        
+    </div>
+  </nav>
+        <script>
+            $('.button-collapse').sideNav({
+              menuWidth: 240, // Default is 240
+              edge: 'left', // Choose the horizontal origin
+              closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+             }
+            );
+        </script>
+
+		<img class="logo" src="img/ntnlogo.jpg" style="height: 300px; width: 300px; padding-top: 5px;">
+        <h3>About the NTN</h3>
+        <p>The NTN’s mission is to develop and maintain an interconnected, year-round, non-motorized land and water trail network in the central Upper Peninsula of Michigan.</p>
+        <h3>About this Application</h3>
+        <p>This application is meant to provide a source of information for our current and future trail riders. Within the application you can find the location of our trailheads and trails. Information is provided about each trail such as the trails difficulty, length, elevation and usage type.
+        
+        This application was developed by Bob Cowling for a graduate project at the University of Wisconsin-Madison. For more information please contact rcowling @ wisc.edu.     
+        </p>
+        
+	</body>
+</html>

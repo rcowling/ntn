@@ -333,28 +333,32 @@ map.data.addListener('click', function(event) {
             chart.draw(data, {
               height: 150,
               legend: 'none',
-              colors : ['green'],        
+              colors : ['green'],
+              backgroundColor: '#fafafa',    
               titleY: 'Elevation (ft)'
             });
         } else if (level == 'INTERMEDIATE') {
             chart.draw(data, {
               height: 150,
               legend: 'none',
-              colors : ['blue'],        
+              colors : ['blue'], 
+              backgroundColor: '#fafafa',    
               titleY: 'Elevation (ft)'
             });            
         } else if (level == 'ADVANCED') {
             chart.draw(data, {
               height: 150,
               legend: 'none',
-              colors : ['black'],        
+              colors : ['black'],
+              backgroundColor: '#fafafa',    
               titleY: 'Elevation (ft)'
             });            
         } else {
             chart.draw(data, {
               height: 150,
               legend: 'none',
-              colors : ['purple'],        
+              colors : ['purple'],
+              backgroundColor: '#fafafa',    
               titleY: 'Elevation (ft)'
             });            
         }       
