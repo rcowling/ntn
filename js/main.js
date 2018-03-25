@@ -102,8 +102,11 @@ th_layer.addListener('click', function(event) {
   thWindow.setPosition(event.feature.getGeometry().get());
   thWindow.setOptions({pixelOffset: new google.maps.Size(0,-25)});
   thWindow.open(map);
-  // zoom into the marker when it is clicked    
-  map.setZoom(13);
+  // zoom into the marker when it is clicked
+  var zoom = map.getZoom();    
+  if (zoom <= 13) {
+      map.setZoom(13);
+  }
   map.panTo(event.feature.getGeometry().get());
 });
 
@@ -201,6 +204,11 @@ function createStyle(){
         strokeColor: 'green',
         strokeWeight: 3
       });
+      } else {
+      return /** @type {google.maps.Data.StyleOptions} */({
+        strokeColor: 'purple',
+        strokeWeight: 3
+      });          
       }
  });
 }
