@@ -77,6 +77,11 @@ url: "img/end.svg", // url
 scaledSize: new google.maps.Size(30,30), // size   
 };
 
+var elevIcon = {
+url: "img/elev.svg", // url
+scaledSize: new google.maps.Size(25,25), // size   
+};
+
 /*var parking_icon = {
 url: "img/parking.svg", // url
 scaledSize: new google.maps.Size(20,20) // size
@@ -369,7 +374,7 @@ map.data.addListener('click', function(event) {
             mousemarker = new google.maps.Marker({
               position: elevations[e.row].location,
               map: map,
-              icon: "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
+              icon: elevIcon
             });      
 
           } else {
