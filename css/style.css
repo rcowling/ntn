@@ -96,3 +96,7 @@ h10 {
     font-size: 24px;
 }
 
+.btn, .btn-large {
+    background-color: #045491;
+}
+
