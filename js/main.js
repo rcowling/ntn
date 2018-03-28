@@ -331,6 +331,8 @@ map.data.addListener('click', function(event) {
         for (var i = 0; i < elevations.length; i++) {
           data.addRow(['', elevations[i].elevation*3.28084]); // convert meters to feet
         }
+        
+        console.log(data.getValue(1,1));
 
         // Draw the chart using the data within its DIV.
         // Color the chart according to skill level.
