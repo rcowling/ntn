@@ -219,15 +219,21 @@ function createStyle(){
 }
 
 createStyle();
-    
-
-/*map.data.addListener('mouseover', function(event) { 
+/*    
+function highLight() {
+map.data.addListener('mouseover', function(event) { 
      map.data.overrideStyle( event.feature, { strokeWeight: 3, strokeColor: 'white' } );   
 });
+}
 
+highLight();
+
+if (highLight) {
 map.data.addListener('mouseout', function(event) { 
      map.data.revertStyle();
-});*/
+});
+}*/
+
 
 map.data.addListener('click', function(event) {    
     // open modal that contains info from the trail infowindow    
@@ -269,12 +275,14 @@ map.data.addListener('click', function(event) {
         position: start, 
         title:'Trail start',
         icon: startIcon,
+        zIndex: 100,
         map:map
     }));
     markers.push( new google.maps.Marker({
         position: end, 
         title:'Trail end',
         icon: endIcon,
+        zIndex: 100,
         map:map
     }));
 
@@ -377,12 +385,14 @@ map.data.addListener('click', function(event) {
             mousemarker = new google.maps.Marker({
               position: elevations[e.row].location,
               map: map,
+              zIndex: 200,    
               icon: elevIcon
             });      
 
           } else {
             mousemarker.setPosition(elevations[e.row].location);
           }
+            
         });
     }        
       drawChart();
