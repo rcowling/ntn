@@ -125,7 +125,7 @@ parking_layer.addListener('click', function(event) {
 });*/  
 
 // load trails data onto the map 
-map.data.loadGeoJson('data/trailsnew6.geojson');
+map.data.loadGeoJson('data/ntn2018.geojson');
 
 // fuction to filter out trails that are used for snow biking
 function catBiking() {
@@ -319,7 +319,7 @@ map.data.addListener('click', function(event) {
     // Draws and elevation chart on the map using data from Elevation API  
     function drawChart() {    
         // Create a new chart in the elevation_chart DIV.
-        var chart = new google.visualization.AreaChart(chartDiv);
+       
 
         // Extract the data from which to populate the chart.
         // Because the samples are equidistant, the 'Sample'
@@ -332,17 +332,49 @@ map.data.addListener('click', function(event) {
           data.addRow(['', elevations[i].elevation*3.28084]); // convert meters to feet
         }
         
-        console.log(data.getValue(1,1));
+        var data2 = [];
+        
+        
+         for (var i = 0; i < elevations.length; i++) {
+            data2.push(elevations[i].elevation*3.28084); // convert meters to feet        
+        }
+        
+        console.log(data2);
+       
+         var myChart = Highcharts.chart('elevation_chart', {
+             
+        chart: {
+            type: 'area'
+        },
+        title: {
+            text: 'Fruit Consumption'
+        
+        },
+        Axis: {
+            title: {
+                text: 'Fruit eaten'
+            }
+        },
+        series: [{
+            name: 'Elevation',
+            data: data2
+        
+        }]
+             
+            
+    });
+        
+        
+        
 
-        // Draw the chart using the data within its DIV.
+        /*// Draw the chart using the data within its DIV.
         // Color the chart according to skill level.
         if (level == 'BEGINNER') {
             chart.draw(data, {
               height: 150,
               legend: 'none',
               colors : ['green'],
-              backgroundColor: '#fafafa',
-              isStacked: true,    
+              backgroundColor: '#fafafa',    
               titleY: 'Elevation (ft)'
             });
         } else if (level == 'INTERMEDIATE') {
@@ -369,13 +401,13 @@ map.data.addListener('click', function(event) {
               backgroundColor: '#fafafa',    
               titleY: 'Elevation (ft)'
             });            
-        }       
+        }   */    
 
-        // display a marker at position of the current elevation on the chart
-        google.visualization.events.addListener(chart, 'onmouseover', function(e) {
+       // display a marker at position of the current elevation on the chart
+        google.visualization.events.addListener(myChart, 'onmouseover', function(e) {
           if (mousemarker == null) {
             mousemarker = new google.maps.Marker({
-              position: elevations[e.row].location,
+              position: index,
               map: map,
               icon: elevIcon
             });      
