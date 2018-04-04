@@ -388,7 +388,7 @@ map.data.addListener('click', function(event) {
               zIndex: 200,    
               icon: elevIcon
             });      
-
+            console.log(elevations[e.row].location);
           } else {
             mousemarker.setPosition(elevations[e.row].location);
           }
