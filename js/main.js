@@ -415,9 +415,4 @@ map.data.addListener('click', function(event) {
          mousemarker = null;
         }
     });    
-    
-<<<<<<< HEAD
 }); 
-=======
-});   
->>>>>>> origin/master
