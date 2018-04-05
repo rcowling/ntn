@@ -416,4 +416,8 @@ map.data.addListener('click', function(event) {
         }
     });    
     
+<<<<<<< HEAD
 }); 
+=======
+});   
+>>>>>>> origin/master
