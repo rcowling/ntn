@@ -1,5 +1,5 @@
 // Load the Visualization API and the columnchart package.
-google.load('visualization', '1', {packages: ['line', 'corechart']});
+google.charts.load('current', {'packages':['corechart']});
 'use strict';
 var div,mqt,thWindow,parkWindow,path,start,end;
 var options,latlng,marker,markers;
@@ -225,9 +225,7 @@ map.data.addListener('mouseover', function(event) {
      map.data.overrideStyle( event.feature, { strokeWeight: 3, strokeColor: 'white' } );   
 });
 }
-
 highLight();
-
 if (highLight) {
 map.data.addListener('mouseout', function(event) { 
      map.data.revertStyle();
@@ -335,12 +333,10 @@ map.data.addListener('click', function(event) {
         // X axis.
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Sample');
-        data.addColumn('number', 'Elevation');
+        data.addColumn('number', 'Elevation (ft)');        
         for (var i = 0; i < elevations.length; i++) {
-          data.addRow(['', elevations[i].elevation*3.28084]); // convert meters to feet
-        }
-        
-        console.log(data.getValue(1,1));
+          data.addRow(['', Math.round(elevations[i].elevation*3.28084)]); // convert meters to feet
+        }  
 
         // Draw the chart using the data within its DIV.
         // Color the chart according to skill level.
@@ -350,15 +346,17 @@ map.data.addListener('click', function(event) {
               legend: 'none',
               colors : ['green'],
               backgroundColor: '#fafafa',
-              isStacked: true,    
-              titleY: 'Elevation (ft)'
+              isStacked: true,
+              focusTarget: 'category',    
+              titleY: 'Elevation (ft)'                
             });
         } else if (level == 'INTERMEDIATE') {
             chart.draw(data, {
               height: 150,
               legend: 'none',
               colors : ['blue'], 
-              backgroundColor: '#fafafa',    
+              backgroundColor: '#fafafa',
+              focusTarget: 'category',    
               titleY: 'Elevation (ft)'
             });            
         } else if (level == 'ADVANCED') {
@@ -366,7 +364,8 @@ map.data.addListener('click', function(event) {
               height: 150,
               legend: 'none',
               colors : ['black'],
-              backgroundColor: '#fafafa',    
+              backgroundColor: '#fafafa', 
+              focusTarget: 'category',    
               titleY: 'Elevation (ft)'
             });            
         } else {
@@ -374,7 +373,8 @@ map.data.addListener('click', function(event) {
               height: 150,
               legend: 'none',
               colors : ['purple'],
-              backgroundColor: '#fafafa',    
+              backgroundColor: '#fafafa',
+              focusTarget: 'category',    
               titleY: 'Elevation (ft)'
             });            
         }       
@@ -388,7 +388,7 @@ map.data.addListener('click', function(event) {
               zIndex: 200,    
               icon: elevIcon
             });      
-
+            console.log(elevations[e.row].location);
           } else {
             mousemarker.setPosition(elevations[e.row].location);
           }
@@ -416,4 +416,4 @@ map.data.addListener('click', function(event) {
         }
     });    
     
-});   
+}); 
