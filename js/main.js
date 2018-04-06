@@ -115,6 +115,11 @@ th_layer.addListener('click', function(event) {
   map.panTo(event.feature.getGeometry().get());
 });
 
+// close the infowindow on mapclick
+map.addListener('click', function() {    
+    thWindow.close(map);    
+});  
+
 /*// set the infowindow for the parking layer
 parking_layer.addListener('click', function(event) {
   var myHTML = event.feature.getProperty("NAME");
