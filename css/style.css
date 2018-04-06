@@ -104,3 +104,9 @@ h5 {
     font-family: 'Roboto', sans-serif;
     color: #045491;
 }
+
+.fullscreen {
+    position: absolute;
+    right: 20px;
+    top: 4px;
+}

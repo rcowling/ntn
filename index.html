@@ -2,7 +2,8 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width">
+		 <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<title></title>
         
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
@@ -27,7 +28,7 @@
         <script src="https://cdn.klokantech.com/maptilerlayer/v1/index.js"></script>
         
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-        <script src="https://code.highcharts.com/highcharts.src.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/screenfull.js/3.3.2/screenfull.min.js"></script>
         
         <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>    
@@ -44,6 +45,7 @@
          
       <a href="#!" class="brand-logo center" style="font-family: 'Kalam', cursive; font-size: 30px;"><img class="imgheader" src="img/arrowhead.svg" width="30" height="51" > NTN Trails</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
+        <ul class="right "><li><img class="fullscreen" onclick="toggleFullScreen()" src="img/fullscreen.svg" width="28" height="49" ></li></ul>    
       <ul class="right hide-on-med-and-down">       
       </ul>
       <ul class="side-nav" id="mobile-demo">           
@@ -66,6 +68,23 @@
               closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
              }
             );
+        </script>
+        
+        <script>
+            function toggleFullScreen() {
+  var doc = window.document;
+  var docEl = doc.documentElement;
+
+  var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
+  var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+
+  if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
+    requestFullScreen.call(docEl);
+  }
+  else {
+    cancelFullScreen.call(doc);
+  }
+}
         </script>
 
 		<!--put your initial page content here-->

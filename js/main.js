@@ -407,12 +407,13 @@ map.data.addListener('click', function(event) {
     
     // close of the bottomsheet, trail markers, and styles on mapclick
     map.addListener('click', function() {
-        $('#modal1').modal('close');         
+        $('#modal1').modal('close');
+        thWindow.close(map);
         map.data.revertStyle();         
         clearMarkers.call( this );
         if (mousemarker != null) {
          mousemarker.setMap(null);
          mousemarker = null;
         }
-    });    
+    });  
 }); 
