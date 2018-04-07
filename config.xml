@@ -25,6 +25,8 @@
   <access origin="http://maps.google.com/*" />
   <access origin="http://*.google.com" />
   <access origin="http://dev.hospitalku.com/*" />
+        
+  <access origin="https://cdn.klokantech.com/*" />        
 
   <access origin="http://code.jquery.com/*" />
   <access origin="https://maxcdn.bootstrapcdn.com/*" />
