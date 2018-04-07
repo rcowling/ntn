@@ -38,6 +38,51 @@ options = {
 };
 var map = new google.maps.Map( div, options );
 
+ var infoWindow = new google.maps.InfoWindow({map: map});
+
+  // Try HTML5 geolocation.
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      map.setCenter(pos);
+      displayLocationElevation(map.getCenter(), elevator, infoWindow);
+    }, function() {
+      handleLocationError(true, infoWindow, map.getCenter());
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, infoWindow, map.getCenter());
+  }
+
+
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+  infoWindow.setPosition(pos);
+  infoWindow.setContent(browserHasGeolocation ?
+                        'Error: The Geolocation service failed.' :
+                        'Error: Your browser doesn\'t support geolocation.');
+}
+
+function displayLocationElevation(location, elevator, infoWindow) {
+  elevator.getElevationForLocations({
+    'locations': [location]
+  }, function(results, status) {
+    infoWindow.setPosition(location);
+    if (status === google.maps.ElevationStatus.OK) {
+      if (results[0]) {
+        infoWindow.setContent('The elevation at this point <br>is ' +
+            results[0].elevation + ' meters in ' + location);
+      } else {
+        infoWindow.setContent('No results found');
+      }
+    } else {
+      infoWindow.setContent('Elevation service failed due to: ' + status);
+    }
+  });
+}
+
 function clearMouseMarker() {
     if (mousemarker != null) {
       mousemarker.setMap(null);
