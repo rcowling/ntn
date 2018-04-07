@@ -37,6 +37,7 @@ options = {
         }]    
 };
 var map = new google.maps.Map( div, options );
+var elevator = new google.maps.ElevationService;
 
  var infoWindow = new google.maps.InfoWindow({map: map});
 
