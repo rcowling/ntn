@@ -8,7 +8,7 @@
 
   <plugin name="cordova-plugin-whitelist" />
 
-  <plugin name="com.indigoway.cordova.whitelist.whitelistplugin" spec="1.1.1" source="pgb" />
+ <gap:plugin name="cordova-plugin-whitelist" source="npm" />
     <!-- versionCode is optional and Android only -->
   <feature name="http://api.phonegap.com/1.0/network"/>
 
