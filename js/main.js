@@ -47,7 +47,7 @@ function clearMouseMarker() {
 }
 
 var mapMaxZoom = 18;
-function addYourLocationButton(map, marker) {
+function addYourLocationButton(map, marker, circle) {
 var controlDiv = document.createElement('div');
 	
 	var firstChild = document.createElement('button');
@@ -93,8 +93,10 @@ var controlDiv = document.createElement('div');
             var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
              
                 marker.setPosition(latlng);
+                circle.setRadius(position.coords.accuracy);
+                circle.setCenter(latlng);
 				map.setCenter(latlng);
-				clearInterval(animationInterval);
+				clearInterval(animationInterval);                
 				$('#you_location_img').css('background-position', '-144px 0px');
             accuracy = position.coords.accuracy;
            console.log(latlng, accuracy);
@@ -129,12 +131,23 @@ window.setInterval( function () {
 }
 
 	
-	var myMarker = new google.maps.Marker({
-		map: map,
-		animation: google.maps.Animation.DROP,
-		position: latlng
-	});
-	addYourLocationButton(map, myMarker);
+	var myLocationMkr = new google.maps.Marker({
+		map: map,		
+		position: latlng,
+        zIndex: 800000000000000000000000000000000,
+        icon: {
+            path: google.maps.SymbolPath.CIRCLE,scale:6,fillColor:"#3a84df",fillOpacity:1,strokeColor:"#fff",strokeWeight:2}
+    
+    });
+	
+    var radCircle = new google.maps.Circle({clickable:!1,strokeColor:"#3a84df",
+strokeOpacity:.8,strokeWeight:.5,fillColor:"#3a84df",fillOpacity:.25,map:map,center:latlng,radius:1, zIndex: 900000000000000000000000000});
+            
+
+
+	addYourLocationButton(map, myLocationMkr, radCircle);
+
+
 
 // add a control to get the users geolocation https required
 //var geoloccontrol = new klokantech.GeolocationControl(map, mapMaxZoom);
