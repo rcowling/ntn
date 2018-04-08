@@ -48,7 +48,7 @@ var elevator = new google.maps.ElevationService;
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
-      map.setCenter(pos);
+     
       displayLocationElevation(map.getCenter(), elevator, infoWindow);
     }, function() {
       handleLocationError(true, infoWindow, map.getCenter());
