@@ -102,21 +102,21 @@ var controlDiv = document.createElement('div');
            console.log(latlng, accuracy);
         },
         function () { /*error*/ }, {
-            maximumAge: 250, 
+          //  maximumAge: 250, 
             enableHighAccuracy: true
         } 
     );
 
-    window.setTimeout( function () {
+   /* window.setTimeout( function () {
             window.navigator.geolocation.clearWatch( geolocation ) 
         }, 
         5000 //stop checking after 5 seconds
-    );
+    );*/
 };
 window.setInterval( function () {
         setGeolocation();
     }, 
-    15000 //check every 15 seconds
+    //1500 //check every 15 seconds
 );   
 		}
 		else{
