@@ -95,7 +95,9 @@ var controlDiv = document.createElement('div');
                 marker.setPosition(latlng);
                 circle.setRadius(position.coords.accuracy);
                 circle.setCenter(latlng);
-				map.setCenter(latlng);
+             map.panTo(latlng);
+    map.setZoom(16);
+				//map.setCenter(latlng);
 				clearInterval(animationInterval);                
 				$('#you_location_img').css('background-position', '-144px 0px');
             accuracy = position.coords.accuracy;
@@ -123,6 +125,8 @@ window.setInterval( function () {
 			clearInterval(animationInterval);
 			$('#you_location_img').css('background-position', '0px 0px');
 		} 
+        
+       
     });
 	
 	controlDiv.index = 1;
