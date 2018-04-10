@@ -160,7 +160,7 @@ strokeOpacity:.8,strokeWeight:.5,fillColor:"#3a84df",fillOpacity:.25,map:a.map,c
 	controlDiv.appendChild(firstChild);
     
      controlDiv.index = 1;
-	map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(controlDiv);
+	map.controls[google.maps.ControlPosition.RIGHT_TOP].push(controlDiv);
     firstChild.addEventListener('click', function() {
  var elevator = new google.maps.ElevationService;
  elevator.getElevationForLocations({
