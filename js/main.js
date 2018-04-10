@@ -46,6 +46,12 @@ function clearMouseMarker() {
     }
 }
 
+// setup the custom icons
+var geo_icon = {
+url: "img/bluedot.png", // url
+scaledSize: new google.maps.Size(25,25), // size   
+};
+
 var mapMaxZoom = 18;
 function addYourLocationButton(map, marker, circle) {
 var controlDiv = document.createElement('div');
@@ -118,7 +124,7 @@ var controlDiv = document.createElement('div');
 window.setInterval( function () {
         setGeolocation();
     }, 
-    //1500 //check every 15 seconds
+    5000 //check every 15 seconds
 );   
 		}
 		else{
