@@ -148,8 +148,8 @@ strokeOpacity:.8,strokeWeight:.5,fillColor:"#3a84df",fillOpacity:.25,map:a.map,c
     //infoWindow.setPosition(location);
     if (status === google.maps.ElevationStatus.OK) {
       if (results[0]) {
-          //Materialize.toast('Your current elevation is ' + results[0].elevation + ' ft at ' + latlng + '.', 4000);
-         $('#elevation').html(results[0].elevation);
+          Materialize.toast('Your current elevation is ' + results[0].elevation + ' ft at ' + latlng + '.', 4000);
+         //$('#elevation').html(results[0].elevation);
       } else {
         console.log("no content");
       }
