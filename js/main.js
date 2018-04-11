@@ -139,28 +139,7 @@ f.g=function(){Y.i.g.call(this);this.ca&&this.ca.D();delete this.ca;this.Aa&&thi
 f.Ia=function(a){Sc(this,this.A,this.c.s()+a)};f.setVisible=function(a){this.b().style.display=a?"":"none";a&&Rc(this)};function Qc(a){var b=a.b();b&&(rb(b,"valuemin",a.o()),rb(b,"valuemax",a.m()),rb(b,"valuenow",a.s()),rb(b,"valuetext",a.oc(a.s())||""))}f.isEnabled=function(){return this.Ta};function Xc(a,b){return a.G?qc(b):b.offsetLeft};function cd(a,b){Y.call(this,a,b);this.c.Ia(0)}w(cd,Y);function Pc(a){return"vertical"==a?"goog-slider-vertical":"goog-slider-horizontal"};function dd(a,b,c){this.map=a;this.pb=b;this.opacity=null!=c?c:1;ea(this.pb.setOpacity)||alert("Invalid layer");a=$a("div",{style:"margin:5px;overflow:hidden;background:url(https://cdn.klokantech.com/maptilerlayer/v1/opacity-slider.png) no-repeat;width:71px;height:21px;cursor:pointer"});this.I=new cd;this.I.setOrientation("horizontal");Mc(this.I,a);this.I.a.setAttribute("style","padding:0;margin:0;overflow:hidden;background:url(https://cdn.klokantech.com/maptilerlayer/v1/opacity-slider.png) no-repeat -71px 0;width:10px;height:21px;position:relative");
 this.I.fb(0);this.I.Ja(1);this.I.vb(null);this.I.Qb=!0;this.pb.setOpacity(this.opacity,!0);this.I.ea(this.opacity);M(this.I,"change",t(function(){this.pb.setOpacity(this.I.s(),!0)},this));this.I.a.style.left=61*this.opacity+"px";this.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(this.I.b())}dd.prototype.setOpacity=function(a){Tc(this.I,a)};v("klokantech.OpacityControl",dd);function ed(a){if(navigator.geolocation){var b=!a.enabled;b?(a.Pa=!0,a.xb=!!a.yb,a.ma?a.ma.getPosition().equals(new google.maps.LatLng(0,0))||a.ma.setVisible(!0):a.ma=new google.maps.Marker({clickable:!1,position:new google.maps.LatLng(0,0),map:a.map,icon:{path:google.maps.SymbolPath.CIRCLE,scale:6,fillColor:"#3a84df",fillOpacity:.9,strokeColor:"#fff",strokeWeight:2},visible:!1}),a.Z?a.Z.getCenter().equals(new google.maps.LatLng(0,0))||a.Z.setVisible(!0):a.Z=new google.maps.Circle({clickable:!1,strokeColor:"#3a84df",
 strokeOpacity:.8,strokeWeight:.5,fillColor:"#3a84df",fillOpacity:.25,map:a.map,center:new google.maps.LatLng(0,0),radius:1,visible:!1}),a.Bb||(a.Bb=navigator.geolocation.watchPosition(t(function(a){if(this.enabled){var b=new google.maps.LatLng(a.coords.latitude,a.coords.longitude); console.log(b);
-    var controlDiv = document.createElement('div');
-	
-	var firstChild = document.createElement('button');
-	firstChild.style.backgroundColor = '#fff';
-	firstChild.style.border = 'none';
-	firstChild.style.outline = 'none';
-	firstChild.style.width = '28px';
-	firstChild.style.height = '28px';
-	firstChild.style.borderRadius = '2px';
-	firstChild.style.boxShadow = '0 1px 4px rgba(0,0,0,0.3)';
-    firstChild.style.backgroundImage = 'url(img/control.svg)';
- 
-    firstChild.style.backgroundPosition = '0px 0px';
-	firstChild.style.backgroundRepeat = 'no-repeat';          
-	firstChild.style.cursor = 'pointer';
-	firstChild.style.marginRight = '10px';
-	firstChild.style.padding = '0px';
-	firstChild.title = 'Your Location';
-	controlDiv.appendChild(firstChild);
-    
-     controlDiv.index = 1;
-	map.controls[google.maps.ControlPosition.RIGHT_TOP].push(controlDiv);
+  
     firstChild.addEventListener('click', function() {
  var elevator = new google.maps.ElevationService;
  elevator.getElevationForLocations({
@@ -169,7 +148,7 @@ strokeOpacity:.8,strokeWeight:.5,fillColor:"#3a84df",fillOpacity:.25,map:a.map,c
     //infoWindow.setPosition(location);
     if (status === google.maps.ElevationStatus.OK) {
       if (results[0]) {
-          console.log(results[0].elevation);
+          Materialize.toast('Your current elevation is ' + results[0].elevation + ' ft at ' + latlng + '.', 4000);
         
       } else {
         console.log("no content");
@@ -195,7 +174,40 @@ function clearMouseMarker() {
 }
 
               
-
+  var controlDiv = document.createElement('div');
+	
+	var firstChild = document.createElement('button');
+	firstChild.style.backgroundColor = '#fff';
+	firstChild.style.border = 'none';
+	firstChild.style.outline = 'none';
+	firstChild.style.width = '28px';
+	firstChild.style.height = '28px';
+	firstChild.style.borderRadius = '2px';
+	firstChild.style.boxShadow = '0 1px 4px rgba(0,0,0,0.3)';
+    //firstChild.style.backgroundImage = 'url(img/control.svg)';
+ 
+    firstChild.style.backgroundPosition = '0px 0px';
+	firstChild.style.backgroundRepeat = 'no-repeat';          
+	firstChild.style.cursor = 'pointer';
+	firstChild.style.marginRight = '10px';
+    firstChild.style.marginTop = '10px';          
+	firstChild.style.padding = '0px';
+	firstChild.title = 'Your Location';
+	controlDiv.appendChild(firstChild);
+              
+    var secondChild = document.createElement('div');
+	secondChild.style.margin = '5px';
+	secondChild.style.width = '18px';
+	secondChild.style.height = '18px';
+	secondChild.style.backgroundImage = 'url(https://maps.gstatic.com/tactile/mylocation/mylocation-sprite-1x.png)';
+	secondChild.style.backgroundSize = '180px 18px';
+	secondChild.style.backgroundPosition = '0px 0px';
+	secondChild.style.backgroundRepeat = 'no-repeat';
+	secondChild.id = 'you_location_img';
+	firstChild.appendChild(secondChild);          
+    
+     controlDiv.index = 1;
+	map.controls[google.maps.ControlPosition.RIGHT_TOP].push(controlDiv);
               
             
               
@@ -309,6 +321,7 @@ function catBiking() {
       });    
      }
     })
+    Materialize.toast('Displaying trails for snowbiking.', 4000)
 }
 
 // fuction to filter out trails that are used for skiing
@@ -329,6 +342,7 @@ function catSki() {
       });    
      }
     })
+    Materialize.toast('Displaying trails for skiing.', 4000)
 }
 
 // fuction to filter out trails that are used for skiing
@@ -349,6 +363,7 @@ function catShoe() {
       });    
      }
     })
+    Materialize.toast('Displaying trails for snowshoeing.', 4000)
 }
 
 // add the original color style for the trails
