@@ -168,12 +168,13 @@ this.Ib),this.xb=this.Pa=this.enabled=!1,this.yb=b||null,this.Z=this.ma=this.Bb=
     ed(this);a.preventDefault()
   var elevator = new google.maps.ElevationService;
  elevator.getElevationForLocations({
-    'locations': [b]
+    'locations': [yb]
   }, function(results, status) {
     //infoWindow.setPosition(location);
     if (status === google.maps.ElevationStatus.OK) {
       if (results[0]) {
           Materialize.toast('Your current elevation is ' + results[0].elevation + ' ft at ' + latlng + '.', 4000);
+          
         
       } else {
         console.log("no content");
