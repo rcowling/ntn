@@ -140,7 +140,7 @@ f.Ia=function(a){Sc(this,this.A,this.c.s()+a)};f.setVisible=function(a){this.b()
 this.I.fb(0);this.I.Ja(1);this.I.vb(null);this.I.Qb=!0;this.pb.setOpacity(this.opacity,!0);this.I.ea(this.opacity);M(this.I,"change",t(function(){this.pb.setOpacity(this.I.s(),!0)},this));this.I.a.style.left=61*this.opacity+"px";this.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(this.I.b())}dd.prototype.setOpacity=function(a){Tc(this.I,a)};v("klokantech.OpacityControl",dd);function ed(a){if(navigator.geolocation){var b=!a.enabled;b?(a.Pa=!0,a.xb=!!a.yb,a.ma?a.ma.getPosition().equals(new google.maps.LatLng(0,0))||a.ma.setVisible(!0):a.ma=new google.maps.Marker({clickable:!1,position:new google.maps.LatLng(0,0),map:a.map,icon:{path:google.maps.SymbolPath.CIRCLE,scale:6,fillColor:"#3a84df",fillOpacity:.9,strokeColor:"#fff",strokeWeight:2},visible:!1}),a.Z?a.Z.getCenter().equals(new google.maps.LatLng(0,0))||a.Z.setVisible(!0):a.Z=new google.maps.Circle({clickable:!1,strokeColor:"#3a84df",
 strokeOpacity:.8,strokeWeight:.5,fillColor:"#3a84df",fillOpacity:.25,map:a.map,center:new google.maps.LatLng(0,0),radius:1,visible:!1}),a.Bb||(a.Bb=navigator.geolocation.watchPosition(t(function(a){if(this.enabled){var b=new google.maps.LatLng(a.coords.latitude,a.coords.longitude); console.log(b);
   
-     $("#geolocationBtn").click(function(){
+     
  var elevator = new google.maps.ElevationService;
  elevator.getElevationForLocations({
     'locations': [b]
@@ -148,8 +148,8 @@ strokeOpacity:.8,strokeWeight:.5,fillColor:"#3a84df",fillOpacity:.25,map:a.map,c
     //infoWindow.setPosition(location);
     if (status === google.maps.ElevationStatus.OK) {
       if (results[0]) {
-          Materialize.toast('Your current elevation is ' + results[0].elevation + ' ft at ' + latlng + '.', 4000);
-        
+          //Materialize.toast('Your current elevation is ' + results[0].elevation + ' ft at ' + latlng + '.', 4000);
+         $('#elevation').html(results[0].elevation);
       } else {
         console.log("no content");
       }
@@ -157,7 +157,7 @@ strokeOpacity:.8,strokeWeight:.5,fillColor:"#3a84df",fillOpacity:.25,map:a.map,c
       console.log("none");
     }
   });
-    });
+    
 
 this.ma.setPosition(b);this.ma.setVisible(!0);this.Z.setCenter(b);this.Z.setRadius(a.coords.accuracy);this.Z.setVisible(!0);this.Pa&&(this.map.setCenter(b),this.Pa=!0);this.xb&&this.yb&&(this.map.setZoom(this.yb),this.xb=
 !1)}},a),void 0,{enableHighAccuracy:!0}))):(a.ma.setVisible(!1),a.Z.setVisible(!1));a.Ib.style.backgroundPosition=b?"-18px":"";a.enabled=b}}
@@ -200,21 +200,12 @@ function clearMouseMarker() {
 	firstChild.title = 'Your Location';
 	controlDiv.appendChild(firstChild);
               
-    var secondChild = document.createElement('div');
-	secondChild.style.margin = '5px';
-	secondChild.style.width = '18px';
-	secondChild.style.height = '18px';
-	secondChild.style.backgroundImage = 'url(https://maps.gstatic.com/tactile/mylocation/mylocation-sprite-1x.png)';
-	secondChild.style.backgroundSize = '180px 18px';
-	secondChild.style.backgroundPosition = '0px 0px';
-	secondChild.style.backgroundRepeat = 'no-repeat';
-	secondChild.id = 'you_location_img';
-	firstChild.appendChild(secondChild);          
+       
     
      controlDiv.index = 1;
 	map.controls[google.maps.ControlPosition.RIGHT_TOP].push(controlDiv);
               
-            
+    $( ".controlDiv" ).hide();        
               
    
 

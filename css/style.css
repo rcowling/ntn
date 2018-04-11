@@ -110,3 +110,9 @@ h5 {
     right: 20px;
     top: 4px;
 }
+
+#elevation {
+    position: absolute;
+    z-index: 9000000000;
+    color: black;
+}
