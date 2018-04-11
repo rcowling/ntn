@@ -162,13 +162,13 @@ strokeOpacity:.8,strokeWeight:.5,fillColor:"#3a84df",fillOpacity:.25,map:a.map,c
 this.ma.setPosition(b);this.ma.setVisible(!0);this.Z.setCenter(b);this.Z.setRadius(a.coords.accuracy);this.Z.setVisible(!0);this.Pa&&(this.map.setCenter(b),this.Pa=!0);this.xb&&this.yb&&(this.map.setZoom(this.yb),this.xb=
 !1)}},a),void 0,{enableHighAccuracy:!0}))):(a.ma.setVisible(!1),a.Z.setVisible(!1));a.Ib.style.backgroundPosition=b?"-18px":"";a.enabled=b}}
 v("klokantech.GeolocationControl",function(a,b,c){this.map=a;navigator.geolocation&&"https:"==location.protocol&&(this.Ib=$a("div",{style:"background-size:36px 18px;width:18px;height:18px;opacity:0.9;background-image:url(https://cdn.klokantech.com/maptilerlayer/v1/geolocation.png);",id:"geolocationIcon"}),this.element=$a("div",{style:"background-color:#fff;border:2px solid #fff;border-radius 3px;box-shadow:rgba(0,0,0,0.298039) 0 1px 4px -1px;margin-right:10px;cursor:pointer;border-radius:2px;padding:3px;",id:"geolocationBtn"},
-this.Ib),this.xb=this.Pa=this.enabled=!1,this.yb=b||null,this.Z=this.ma=this.Bb=null,M(this.element,"click",function(a){
+this.Ib),this.xb=this.Pa=this.enabled=!1,this.yb=b||null,this.Z=this.ma=this.Bb=null,M(this.element,"click",function(a,b){
     
   
     ed(this);a.preventDefault()
   var elevator = new google.maps.ElevationService;
  elevator.getElevationForLocations({
-    'locations': [yb]
+    'locations': [b]
   }, function(results, status) {
     //infoWindow.setPosition(location);
     if (status === google.maps.ElevationStatus.OK) {
