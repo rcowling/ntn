@@ -164,7 +164,9 @@ this.ma.setPosition(b);this.ma.setVisible(!0);this.Z.setCenter(b);this.Z.setRadi
 v("klokantech.GeolocationControl",function(a,b,c){this.map=a;navigator.geolocation&&"https:"==location.protocol&&(this.Ib=$a("div",{style:"background-size:36px 18px;width:18px;height:18px;opacity:0.9;background-image:url(https://cdn.klokantech.com/maptilerlayer/v1/geolocation.png);",id:"geolocationIcon"}),this.element=$a("div",{style:"background-color:#fff;border:2px solid #fff;border-radius 3px;box-shadow:rgba(0,0,0,0.298039) 0 1px 4px -1px;margin-right:10px;cursor:pointer;border-radius:2px;padding:3px;",id:"geolocationBtn"},
 this.Ib),this.xb=this.Pa=this.enabled=!1,this.yb=b||null,this.Z=this.ma=this.Bb=null,M(this.element,"click",function(a){
     
-    var elevator = new google.maps.ElevationService;
+  
+    ed(this);a.preventDefault()
+  var elevator = new google.maps.ElevationService;
  elevator.getElevationForLocations({
     'locations': [b]
   }, function(results, status) {
@@ -180,7 +182,7 @@ this.Ib),this.xb=this.Pa=this.enabled=!1,this.yb=b||null,this.Z=this.ma=this.Bb=
       console.log("none");
     }
   });
-    ed(this);a.preventDefault()},!1,this),this.map.controls[c||google.maps.ControlPosition.RIGHT_BOTTOM].push(this.element),a.addListener("center_changed",t(function(){this.Pa=!1},this)))});
+},!1,this),this.map.controls[c||google.maps.ControlPosition.RIGHT_BOTTOM].push(this.element),a.addListener("center_changed",t(function(){this.Pa=!1},this)))});
               
 //console.log(b.coords.longitude);              
 
