@@ -17,7 +17,7 @@ body {position: absolute; z-index: -2;}
 }
 
 .modal {
-    height: 30%;
+    height: 200px;
     padding: 0px;
     overflow: hidden;
 }

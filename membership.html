@@ -37,14 +37,14 @@
     <div class="nav-wrapper">
          
       <a href="#!" class="brand-logo center" style="font-family: 'Kalam', cursive; font-size: 30px;"><img class="imgheader" style="right: 160px;" src="img/arrowhead.svg" width="30" height="51" >Membership</a>
-      <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="material-icons">menu</i></a><ul class="right "><li><img class="fullscreen" onclick="toggleFullScreen()" src="img/fullscreen.svg" width="28" height="49" ></li></ul>
       <ul class="right hide-on-med-and-down">       
       </ul>
-      <ul class="side-nav" id="mobile-demo">          
-        <li><a href="about.html">About</a></li>
-        <li><a href="membership.html">Membership</a></li>
-        <li><a href="index.html">Trail Map</a></li>   
+      <ul class="side-nav" id="mobile-demo">  
+        <li><a href="index.html">Trail Map</a></li>
         <li><a href="weather.html">Weather</a></li>
+        <li><a href="membership.html">Membership</a></li>  
+        <li><a href="about.html">About</a></li>       
       </ul>        
     </div>
   </nav>
@@ -56,6 +56,24 @@
              }
             );
         </script>
+        
+        <script>
+            function toggleFullScreen() {
+              var doc = window.document;
+              var docEl = doc.documentElement;
+
+              var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
+              var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+
+              if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
+                requestFullScreen.call(docEl);
+              }
+              else {
+                cancelFullScreen.call(doc);
+              }
+            }
+        </script>
+
 <h5>Become a Member</h5>
 <b>Options: We have a selection of memberships to suit your interests. Review the categories below to find the membership right for you and your family. If you have questions, please call us at 906-235-6861 or stop in the NTN office at Lakeview Arena in Marquette.</b>
 <br><br>
