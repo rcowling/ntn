@@ -296,6 +296,17 @@ map.data.addListener('click', function(event) {
     } else {
         document.getElementById("name").style.color = "purple"; 
     }
+    
+    // change images based on difficulty
+    if (level == 'BEGINNER') {
+         document.getElementById('lvlImage').src = "img/beginner.svg";
+    } else if (level == 'INTERMEDIATE') {
+         document.getElementById('lvlImage').src = "img/inter.svg";       
+    } else if (level == 'ADVANCED') {
+         document.getElementById('lvlImage').src = "img/advanced.svg";  
+    } else {
+        console.log("no difficulty")
+    }
 
     // change the line back to its original color style
     map.data.revertStyle();
