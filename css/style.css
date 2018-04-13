@@ -111,8 +111,6 @@ h5 {
     top: 4px;
 }
 
-#elevation {
-    position: absolute;
-    z-index: 9000000000;
-    color: black;
+#elevation-chart {
+    padding: 0px;
 }

@@ -14,7 +14,7 @@ var clearMarkers=function(){
 };        
 
 div=document.getElementById('map');
-mqt=new google.maps.LatLng(46.6125248, -87.4940628 );         
+mqt=new google.maps.LatLng(46.6332746,-87.5476211 );         
 
 // creates an infowindow for the trailheads
 thWindow = new google.maps.InfoWindow();
@@ -400,6 +400,7 @@ map.data.addListener('click', function(event) {
               titleX: 'Distance (km)',
                 
             });
+            
         } else if (level == 'INTERMEDIATE') {
             chart.draw(data, {
               height: 150,
