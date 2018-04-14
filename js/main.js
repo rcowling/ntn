@@ -162,7 +162,7 @@ function elevation () {
     //infoWindow.setPosition(location);
     if (status === google.maps.ElevationStatus.OK) {
       if (results[0]) {
-           Materialize.toast("Your current elevation is: " + Math.round(results[0].elevation) " ft" + " at " + b, 4000);
+           Materialize.toast("Your current elevation is: " + Math.round(results[0].elevation) + " ft" + " at " + b, 4000);
                   
       } else {
         console.log("no content");
