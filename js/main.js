@@ -147,7 +147,7 @@ strokeOpacity:.8,strokeWeight:.5,fillColor:"#3a84df",fillOpacity:.25,map:a.map,c
     if (status === google.maps.ElevationStatus.OK) {
       if (results[0]) {
            Materialize.toast(results[0].elevation, 4000);
-           Materialize.toast.dismissAll();
+           Materialize.toast.removeAll();
         
       } else {
         console.log("no content");
