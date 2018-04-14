@@ -139,7 +139,23 @@ f.g=function(){Y.i.g.call(this);this.ca&&this.ca.D();delete this.ca;this.Aa&&thi
 f.Ia=function(a){Sc(this,this.A,this.c.s()+a)};f.setVisible=function(a){this.b().style.display=a?"":"none";a&&Rc(this)};function Qc(a){var b=a.b();b&&(rb(b,"valuemin",a.o()),rb(b,"valuemax",a.m()),rb(b,"valuenow",a.s()),rb(b,"valuetext",a.oc(a.s())||""))}f.isEnabled=function(){return this.Ta};function Xc(a,b){return a.G?qc(b):b.offsetLeft};function cd(a,b){Y.call(this,a,b);this.c.Ia(0)}w(cd,Y);function Pc(a){return"vertical"==a?"goog-slider-vertical":"goog-slider-horizontal"};function dd(a,b,c){this.map=a;this.pb=b;this.opacity=null!=c?c:1;ea(this.pb.setOpacity)||alert("Invalid layer");a=$a("div",{style:"margin:5px;overflow:hidden;background:url(https://cdn.klokantech.com/maptilerlayer/v1/opacity-slider.png) no-repeat;width:71px;height:21px;cursor:pointer"});this.I=new cd;this.I.setOrientation("horizontal");Mc(this.I,a);this.I.a.setAttribute("style","padding:0;margin:0;overflow:hidden;background:url(https://cdn.klokantech.com/maptilerlayer/v1/opacity-slider.png) no-repeat -71px 0;width:10px;height:21px;position:relative");
 this.I.fb(0);this.I.Ja(1);this.I.vb(null);this.I.Qb=!0;this.pb.setOpacity(this.opacity,!0);this.I.ea(this.opacity);M(this.I,"change",t(function(){this.pb.setOpacity(this.I.s(),!0)},this));this.I.a.style.left=61*this.opacity+"px";this.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(this.I.b())}dd.prototype.setOpacity=function(a){Tc(this.I,a)};v("klokantech.OpacityControl",dd);function ed(a){if(navigator.geolocation){var b=!a.enabled;b?(a.Pa=!0,a.xb=!!a.yb,a.ma?a.ma.getPosition().equals(new google.maps.LatLng(0,0))||a.ma.setVisible(!0):a.ma=new google.maps.Marker({clickable:!1,position:new google.maps.LatLng(0,0),map:a.map,icon:{path:google.maps.SymbolPath.CIRCLE,scale:6,fillColor:"#3a84df",fillOpacity:.9,strokeColor:"#fff",strokeWeight:2},visible:!1}),a.Z?a.Z.getCenter().equals(new google.maps.LatLng(0,0))||a.Z.setVisible(!0):a.Z=new google.maps.Circle({clickable:!1,strokeColor:"#3a84df",
 strokeOpacity:.8,strokeWeight:.5,fillColor:"#3a84df",fillOpacity:.25,map:a.map,center:new google.maps.LatLng(0,0),radius:1,visible:!1}),a.Bb||(a.Bb=navigator.geolocation.watchPosition(t(function(a){if(this.enabled){var b=new google.maps.LatLng(a.coords.latitude,a.coords.longitude); console.log(b);
- var elevator = new google.maps.ElevationService;
+
+function once(fn, context) { 
+    var result;
+
+    return function() { 
+        if(fn) {
+            result = fn.apply(context || this, arguments);
+            fn = null;
+        }
+
+        return result;
+    };
+}
+
+// Usage
+var canOnlyFireOnce = once(function() {
+     var elevator = new google.maps.ElevationService;
  elevator.getElevationForLocations({
     'locations': [b]
   }, function(results, status) {
@@ -147,7 +163,7 @@ strokeOpacity:.8,strokeWeight:.5,fillColor:"#3a84df",fillOpacity:.25,map:a.map,c
     if (status === google.maps.ElevationStatus.OK) {
       if (results[0]) {
            Materialize.toast(results[0].elevation, 4000);
-           Materialize.Toast.removeAll();        
+                  
       } else {
         console.log("no content");
       }
@@ -155,6 +171,11 @@ strokeOpacity:.8,strokeWeight:.5,fillColor:"#3a84df",fillOpacity:.25,map:a.map,c
       console.log("none");
     }
   });
+});
+
+canOnlyFireOnce(); // "Fired!"
+canOnlyFireOnce(); // nada
+
 
 this.ma.setPosition(b);this.ma.setVisible(!0);this.Z.setCenter(b);this.Z.setRadius(a.coords.accuracy);this.Z.setVisible(!0);this.Pa&&(this.map.setCenter(b),this.Pa=!0);this.xb&&this.yb&&(this.map.setZoom(this.yb),this.xb=
 !1)}},a),void 0,{enableHighAccuracy:!0}))):(a.ma.setVisible(!1),a.Z.setVisible(!1));a.Ib.style.backgroundPosition=b?"-18px":"";a.enabled=b}}
