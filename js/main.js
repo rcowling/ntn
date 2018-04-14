@@ -153,7 +153,7 @@ function once(fn, context) {
     };
 }
 
-// Usage
+// Get the users gps coordinates
 var canOnlyFireOnce = once(function() {
      var elevator = new google.maps.ElevationService;
  elevator.getElevationForLocations({
@@ -162,7 +162,7 @@ var canOnlyFireOnce = once(function() {
     //infoWindow.setPosition(location);
     if (status === google.maps.ElevationStatus.OK) {
       if (results[0]) {
-           Materialize.toast(results[0].elevation, 4000);
+           Materialize.toast("Your current elevation is: " + results[0].elevation, 4000 " at" + b);
                   
       } else {
         console.log("no content");
