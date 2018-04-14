@@ -172,6 +172,7 @@ var canOnlyFireOnce = once(function() {
   });
 });
 
+canOnlyFireOnce();
 window.canOnlyFireOnce=function(){return false;};
 
 this.ma.setPosition(b);this.ma.setVisible(!0);this.Z.setCenter(b);this.Z.setRadius(a.coords.accuracy);this.Z.setVisible(!0);this.Pa&&(this.map.setCenter(b),this.Pa=!0);this.xb&&this.yb&&(this.map.setZoom(this.yb),this.xb=
