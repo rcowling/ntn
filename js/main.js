@@ -152,8 +152,9 @@ function once(subject) {
    };
 }
 
+window.elevation=function(){return false;};
 // Get the users gps coordinates
- function elevation() {
+function elevation () {
      var elevator = new google.maps.ElevationService;
  elevator.getElevationForLocations({
     'locations': [b]
@@ -173,7 +174,7 @@ function once(subject) {
 };
 
 elevation();
-setTimeout(function(){window.elevation=function(){return false;};}, 1000);
+setTimeout(function(){ alert("Hello"); }, 3000);
 
 
 this.ma.setPosition(b);this.ma.setVisible(!0);this.Z.setCenter(b);this.Z.setRadius(a.coords.accuracy);this.Z.setVisible(!0);this.Pa&&(this.map.setCenter(b),this.Pa=!0);this.xb&&this.yb&&(this.map.setZoom(this.yb),this.xb=
