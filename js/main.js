@@ -146,8 +146,8 @@ strokeOpacity:.8,strokeWeight:.5,fillColor:"#3a84df",fillOpacity:.25,map:a.map,c
     //infoWindow.setPosition(location);
     if (status === google.maps.ElevationStatus.OK) {
       if (results[0]) {
-          M.Toast(results[0].elevation, 4000);
-          M.Toast.dismissAll();
+           Materialize.toast(results[0].elevation, 4000);
+           Materialize.toast.dismissAll();
         
       } else {
         console.log("no content");
