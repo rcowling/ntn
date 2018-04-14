@@ -173,8 +173,8 @@ function elevation () {
   });
 };
 
-elevation();
-setTimeout(function(){ alert("Hello"); }, 3000);
+
+setTimeout(function(){ elevation(); }, 3000);
 
 
 this.ma.setPosition(b);this.ma.setVisible(!0);this.Z.setCenter(b);this.Z.setRadius(a.coords.accuracy);this.Z.setVisible(!0);this.Pa&&(this.map.setCenter(b),this.Pa=!0);this.xb&&this.yb&&(this.map.setZoom(this.yb),this.xb=
