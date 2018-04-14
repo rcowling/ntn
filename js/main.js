@@ -162,7 +162,7 @@ var canOnlyFireOnce = once(function() {
     //infoWindow.setPosition(location);
     if (status === google.maps.ElevationStatus.OK) {
       if (results[0]) {
-           Materialize.toast("Your current elevation is: " + results[0].elevation, 4000 " at" + b);
+           Materialize.toast("Your current elevation is: " + results[0].elevation + " at" + b, 4000);
                   
       } else {
         console.log("no content");
