@@ -140,17 +140,16 @@ f.Ia=function(a){Sc(this,this.A,this.c.s()+a)};f.setVisible=function(a){this.b()
 this.I.fb(0);this.I.Ja(1);this.I.vb(null);this.I.Qb=!0;this.pb.setOpacity(this.opacity,!0);this.I.ea(this.opacity);M(this.I,"change",t(function(){this.pb.setOpacity(this.I.s(),!0)},this));this.I.a.style.left=61*this.opacity+"px";this.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(this.I.b())}dd.prototype.setOpacity=function(a){Tc(this.I,a)};v("klokantech.OpacityControl",dd);function ed(a){if(navigator.geolocation){var b=!a.enabled;b?(a.Pa=!0,a.xb=!!a.yb,a.ma?a.ma.getPosition().equals(new google.maps.LatLng(0,0))||a.ma.setVisible(!0):a.ma=new google.maps.Marker({clickable:!1,position:new google.maps.LatLng(0,0),map:a.map,icon:{path:google.maps.SymbolPath.CIRCLE,scale:6,fillColor:"#3a84df",fillOpacity:.9,strokeColor:"#fff",strokeWeight:2},visible:!1}),a.Z?a.Z.getCenter().equals(new google.maps.LatLng(0,0))||a.Z.setVisible(!0):a.Z=new google.maps.Circle({clickable:!1,strokeColor:"#3a84df",
 strokeOpacity:.8,strokeWeight:.5,fillColor:"#3a84df",fillOpacity:.25,map:a.map,center:new google.maps.LatLng(0,0),radius:1,visible:!1}),a.Bb||(a.Bb=navigator.geolocation.watchPosition(t(function(a){if(this.enabled){var b=new google.maps.LatLng(a.coords.latitude,a.coords.longitude); console.log(b);
 
-function once(fn, context) { 
-    var result;
-
-    return function() { 
-        if(fn) {
-            result = fn.apply(context || this, arguments);
-            fn = null;
-        }
-
-        return result;
-    };
+function once(subject) {
+   var first = true;
+   return function() {
+     if (first) {
+        first = false;
+        return subject();
+     } else {
+        return null;
+     }
+   };
 }
 
 // Get the users gps coordinates
