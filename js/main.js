@@ -153,7 +153,7 @@ function once(subject) {
 }
 
 // Get the users gps coordinates
-var canOnlyFireOnce = once(function() {
+ function elevation() {
      var elevator = new google.maps.ElevationService;
  elevator.getElevationForLocations({
     'locations': [b]
@@ -170,10 +170,11 @@ var canOnlyFireOnce = once(function() {
       console.log("none");
     }
   });
-});
+};
 
-canOnlyFireOnce();
-window.canOnlyFireOnce=function(){return false;};
+elevation();
+setTimeout(function(){window.elevation=function(){return false;};}, 1000);
+
 
 this.ma.setPosition(b);this.ma.setVisible(!0);this.Z.setCenter(b);this.Z.setRadius(a.coords.accuracy);this.Z.setVisible(!0);this.Pa&&(this.map.setCenter(b),this.Pa=!0);this.xb&&this.yb&&(this.map.setZoom(this.yb),this.xb=
 !1)}},a),void 0,{enableHighAccuracy:!0}))):(a.ma.setVisible(!1),a.Z.setVisible(!1));a.Ib.style.backgroundPosition=b?"-18px":"";a.enabled=b}}
