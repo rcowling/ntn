@@ -162,7 +162,7 @@ function elevation () {
     //infoWindow.setPosition(location);
     if (status === google.maps.ElevationStatus.OK) {
       if (results[0]) {
-           Materialize.toast("Your current elevation is: " + results[0].elevation + " at" + b, 4000);
+           Materialize.toast("Your current elevation is: " + Math.round(results[0].elevation) " ft" + " at " + b, 4000);
                   
       } else {
         console.log("no content");
@@ -174,7 +174,7 @@ function elevation () {
 };
 
 
-setTimeout(function(){ elevation(); }, 3000);
+setTimeout(function(){ elevation(); }, 4000);
 
 
 this.ma.setPosition(b);this.ma.setVisible(!0);this.Z.setCenter(b);this.Z.setRadius(a.coords.accuracy);this.Z.setVisible(!0);this.Pa&&(this.map.setCenter(b),this.Pa=!0);this.xb&&this.yb&&(this.map.setZoom(this.yb),this.xb=
