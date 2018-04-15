@@ -111,7 +111,9 @@ h5 {
     top: 4px;
 }
 
-#elevation-chart {
-    margin-top: -15px; 
-});
+@media all and (max-width: 1000px)  
+{
+    #elevation-chart {
+        margin-top: -10px !important;
+    }
 }
