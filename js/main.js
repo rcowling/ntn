@@ -37,8 +37,7 @@ options = {
         }]    
 };
 
-var map = new google.maps.Map( div, options );
-             
+var map = new google.maps.Map( div, options );             
 
 function clearMouseMarker() {
     if (mousemarker != null) {
@@ -383,15 +382,11 @@ map.data.addListener('click', function(event) {
         var data = new google.visualization.DataTable();
          
         data.addColumn('number', 'Distance');        
-        data.addColumn('number', 'Elevation'); 
-        
-        
+        data.addColumn('number', 'Elevation');        
         
         for (var i = 0; i < elevations.length; i++) {
           data.addRow([((trailLength/256)*i), Math.round(elevations[i].elevation*3.28084)]); // convert meters to feet            
-        }    
-        
-     
+        }       
 
         // Draw the chart using the data within its DIV.
         // Color the chart according to skill level.

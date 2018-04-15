@@ -112,5 +112,6 @@ h5 {
 }
 
 #elevation-chart {
-    padding: 0px;
+    margin-top: -15px; 
+});
 }
