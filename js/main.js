@@ -136,20 +136,37 @@ map.data.loadGeoJson('data/trailsnew6.geojson');
 // fuction to filter out trails that are used for snow biking
 function catBiking() {
     map.data.setStyle(function(feature) {
+     var skill = feature.getProperty('skill_leve');    
      var category = feature.getProperty('snowbike');
-     if (category == 'Y'){
-      return /** @type {google.maps.Data.StyleOptions} */({        
-        strokeColor: 'orange',
-        strokeWeight: 3,
-        visible: true  
-      });
-     } else {
+     if (category == 'N'){
       return /** @type {google.maps.Data.StyleOptions} */({        
         strokeColor: 'gray',
-        strokeWeight: 1,
+        strokeWeight: 2,
         visible: true  
-      });    
-     }
+      });
+     } else if (skill == 'ADVANCED'){
+      return /** @type {google.maps.Data.StyleOptions} */({
+        fillColor: 'white',
+        strokeColor: 'black',
+        strokeWeight: 3
+      });
+      } else if (skill == 'INTERMEDIATE'){
+      return /** @type {google.maps.Data.StyleOptions} */({
+        strokeColor: 'blue',
+        strokeWeight: 3 
+          
+      });
+      } else if (skill == 'BEGINNER'){
+      return /** @type {google.maps.Data.StyleOptions} */({
+        strokeColor: 'green',
+        strokeWeight: 3
+      });
+      } else {
+      return /** @type {google.maps.Data.StyleOptions} */({
+        strokeColor: 'purple',
+        strokeWeight: 3
+      });          
+      }
     })
     Materialize.toast('Displaying trails for snowbiking.', 4000)
 }
@@ -157,20 +174,37 @@ function catBiking() {
 // fuction to filter out trails that are used for skiing
 function catSki() {
     map.data.setStyle(function(feature) {
+     var skill = feature.getProperty('skill_leve');    
      var category = feature.getProperty('skiing');
-     if (category == 'Y'){
-      return /** @type {google.maps.Data.StyleOptions} */({        
-        strokeColor: 'orange',
-        strokeWeight: 3,
-        visible: true  
-      });
-     } else {
+     if (category == 'N'){
       return /** @type {google.maps.Data.StyleOptions} */({        
         strokeColor: 'gray',
         strokeWeight: 2,
         visible: true  
-      });    
-     }
+      });
+     } else if (skill == 'ADVANCED'){
+      return /** @type {google.maps.Data.StyleOptions} */({
+        fillColor: 'white',
+        strokeColor: 'black',
+        strokeWeight: 3
+      });
+      } else if (skill == 'INTERMEDIATE'){
+      return /** @type {google.maps.Data.StyleOptions} */({
+        strokeColor: 'blue',
+        strokeWeight: 3 
+          
+      });
+      } else if (skill == 'BEGINNER'){
+      return /** @type {google.maps.Data.StyleOptions} */({
+        strokeColor: 'green',
+        strokeWeight: 3
+      });
+      } else {
+      return /** @type {google.maps.Data.StyleOptions} */({
+        strokeColor: 'purple',
+        strokeWeight: 3
+      });          
+      }
     })
     Materialize.toast('Displaying trails for skiing.', 4000)
 }
@@ -178,20 +212,37 @@ function catSki() {
 // fuction to filter out trails that are used for skiing
 function catShoe() {
     map.data.setStyle(function(feature) {
+     var skill = feature.getProperty('skill_leve');    
      var category = feature.getProperty('snowshoe');
-     if (category == 'Y'){
-      return /** @type {google.maps.Data.StyleOptions} */({        
-        strokeColor: 'orange',
-        strokeWeight: 2,
-        visible: true  
-      });
-     } else {
+     if (category == 'N'){
       return /** @type {google.maps.Data.StyleOptions} */({        
         strokeColor: 'gray',
         strokeWeight: 2,
         visible: true  
-      });    
-     }
+      });
+      } else if (skill == 'ADVANCED'){
+      return /** @type {google.maps.Data.StyleOptions} */({
+        fillColor: 'white',
+        strokeColor: 'black',
+        strokeWeight: 3
+      });
+      } else if (skill == 'INTERMEDIATE'){
+      return /** @type {google.maps.Data.StyleOptions} */({
+        strokeColor: 'blue',
+        strokeWeight: 3 
+          
+      });
+      } else if (skill == 'BEGINNER'){
+      return /** @type {google.maps.Data.StyleOptions} */({
+        strokeColor: 'green',
+        strokeWeight: 3
+      });
+      } else {
+      return /** @type {google.maps.Data.StyleOptions} */({
+        strokeColor: 'purple',
+        strokeWeight: 3
+      });          
+      }
     })
     Materialize.toast('Displaying trails for snowshoeing.', 4000)
 }
@@ -381,11 +432,11 @@ map.data.addListener('click', function(event) {
         // X axis.
         var data = new google.visualization.DataTable();
          
-        data.addColumn('number', 'Distance');        
+        data.addColumn('string', 'Sample');        
         data.addColumn('number', 'Elevation');        
         
         for (var i = 0; i < elevations.length; i++) {
-          data.addRow([((trailLength/256)*i), Math.round(elevations[i].elevation*3.28084)]); // convert meters to feet            
+          data.addRow(['', Math.round(elevations[i].elevation*3.28084)]); // convert meters to feet            
         }       
 
         // Draw the chart using the data within its DIV.
