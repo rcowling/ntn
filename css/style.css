@@ -116,3 +116,5 @@ h5 {
     right: 20px;
     top: 4px;
 }
+
+.gm-style-iw + div {display: none;}
